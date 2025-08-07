@@ -103,6 +103,8 @@ function solid_dynamics_macro($macro) {
             };
 
             return;
+        case 'get':
+            return $_GET[$field];
         // TODO: add option
         // case 'option':
         //     $option = get_option($field);

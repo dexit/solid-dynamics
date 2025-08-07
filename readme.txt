@@ -2,7 +2,7 @@
 Contributors: soliddigital,lukechinworth,peterajtai
 Tags: elementor, dynamic tags, jet engine, macros
 Tested up to: 6.8.1
-Stable tag: 1.10.0
+Stable tag: 1.11.0
 Requires PHP: 7.0
 License: GPLv2
 
@@ -68,6 +68,10 @@ The code is managed on [github](https://github.com/SolidDigital/solid-dynamics),
 3. The various Dynamic Tag options
 
 == Changelog ==
+
+= 1.11.0 =
+2025-08-07
+- Add get param to display condition macro.
 
 = 1.10.0 =
 2025-06-02

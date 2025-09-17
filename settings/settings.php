@@ -60,20 +60,8 @@ class Settings {
 			add_action( 'admin_head', [$this, 'elementor_hide_back_to_wp_editor_button'] );
 		}
 
-		if ($settings['elementor_hide_hello_elementor_page_title']) {
-			add_filter( 'hello_elementor_page_title', '__return_false');
-		}
-
-		if ($settings['elementor_wrap_content']) {
-			add_action( 'elementor/theme/before_do_single', [$this, 'main_open'] );
-			add_action( 'elementor/theme/after_do_single', [$this, 'main_close'] );
-
-			add_action( 'elementor/theme/before_do_archive', [$this, 'main_open'] );
-			add_action( 'elementor/theme/after_do_archive', [$this, 'main_close'] );
-		}
-
 		if ($settings['elementor_subtle_fade_in_entrance_animations']) {
-			add_action( 'wp_enqueue_scripts', [$this, 'elementor_subtle_fade_in_entrance_animations'] );
+			add_action( 'wp_enqueue_scripts', [$this, 'elementor_subtle_fade_in_entrance_animations'], 9999 );
 		}
 	}
 
@@ -105,20 +93,8 @@ class Settings {
         return $endpoints;
     }
 
-	function main_open() {
-		?>
-		<main id="content">
-		<?php
-	}
-
-	function main_close() {
-		?>
-		</main>
-		<?php
-	}
-
 	function elementor_subtle_fade_in_entrance_animations() {
-		wp_enqueue_style('sd-elementor-subtle-fade-in-entrance-animations', plugin_dir_url(__DIR__) . 'assets/elementor-subtle-fade-in-entrance-animations.css', ['e-animations'], '1.0.0');
+		wp_enqueue_style('sd-elementor-subtle-fade-in-entrance-animations', plugin_dir_url(__DIR__) . 'assets/elementor-subtle-fade-in-entrance-animations.css', null, '1.0.0');
 	}
 
 	function add_registration_date_column( $columns ) {

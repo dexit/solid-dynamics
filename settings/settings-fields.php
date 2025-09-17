@@ -46,20 +46,6 @@ function wpsf_register_settings( $wpsf_settings ) {
 				'default' => 0,
 			),
 			array(
-				'id'      => 'hide_hello_elementor_page_title',
-				'title'   => 'Hello Elementor Page Title',
-				'desc'    => 'Hide the page title from the Hello Elementor theme.',
-				'type'    => 'checkbox',
-				'default' => 0,
-			),
-			array(
-				'id'      => 'wrap_content',
-				'title'   => 'Wrap Elementor Content',
-				'desc'    => 'Wrap Elementor content with `main#content`.',
-				'type'    => 'checkbox',
-				'default' => 0,
-			),
-			array(
 				'id'      => 'subtle_fade_in_entrance_animations',
 				'title'   => 'Fade in Entrance Animations',
 				'desc'    => 'Make Elementor fade in entrance animations more subtle.',

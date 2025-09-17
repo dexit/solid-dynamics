@@ -2,7 +2,7 @@
 Contributors: soliddigital,lukechinworth,peterajtai
 Tags: elementor, dynamic tags, jet engine, macros
 Tested up to: 6.8.1
-Stable tag: 1.11.0
+Stable tag: 1.12.0
 Requires PHP: 7.0
 License: GPLv2
 
@@ -68,6 +68,14 @@ The code is managed on [github](https://github.com/SolidDigital/solid-dynamics),
 3. The various Dynamic Tag options
 
 == Changelog ==
+
+= 1.12.0 =
+2025-09-17
+- Remove <main> element option as hello elementor handles skip links.
+- Remove page title checkbox as hello elementor has this now.
+- Fix fade in animation adjustment.
+- Add menu icon.
+
 
 = 1.11.0 =
 2025-08-07

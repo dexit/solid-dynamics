@@ -12,6 +12,7 @@ class Settings {
 
 		// Add admin menu.
 		add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
+		add_filter( 'wpsf_menu_icon_url_solid_dynamics', array( $this, 'menu_icon_url' ) );
 
 		// Add an optional settings validation filter (recommended).
 		add_filter( $this->wpsf->get_option_group() . '_settings_validate', array( &$this, 'validate_settings' ) );
@@ -28,6 +29,10 @@ class Settings {
 				'capability'  => 'manage_options',
 			)
 		);
+	}
+
+	public function menu_icon_url() {
+		return plugin_dir_url(__DIR__) . 'assets/solid-dynamics-icon.svg';
 	}
 
 	public function validate_settings( $input ) {

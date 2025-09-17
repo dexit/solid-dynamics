@@ -12,6 +12,7 @@ class Settings {
 
 		// Add admin menu.
 		add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
+		add_filter( 'wpsf_menu_icon_url_solid_dynamics', array( $this, 'menu_icon_url' ) );
 
 		// Add an optional settings validation filter (recommended).
 		add_filter( $this->wpsf->get_option_group() . '_settings_validate', array( &$this, 'validate_settings' ) );
@@ -28,6 +29,10 @@ class Settings {
 				'capability'  => 'manage_options',
 			)
 		);
+	}
+
+	public function menu_icon_url() {
+		return plugin_dir_url(__DIR__) . 'assets/solid-dynamics-icon.svg';
 	}
 
 	public function validate_settings( $input ) {
@@ -60,20 +65,8 @@ class Settings {
 			add_action( 'admin_head', [$this, 'elementor_hide_back_to_wp_editor_button'] );
 		}
 
-		if ($settings['elementor_hide_hello_elementor_page_title']) {
-			add_filter( 'hello_elementor_page_title', '__return_false');
-		}
-
-		if ($settings['elementor_wrap_content']) {
-			add_action( 'elementor/theme/before_do_single', [$this, 'main_open'] );
-			add_action( 'elementor/theme/after_do_single', [$this, 'main_close'] );
-
-			add_action( 'elementor/theme/before_do_archive', [$this, 'main_open'] );
-			add_action( 'elementor/theme/after_do_archive', [$this, 'main_close'] );
-		}
-
 		if ($settings['elementor_subtle_fade_in_entrance_animations']) {
-			add_action( 'wp_enqueue_scripts', [$this, 'elementor_subtle_fade_in_entrance_animations'] );
+			add_action( 'wp_enqueue_scripts', [$this, 'elementor_subtle_fade_in_entrance_animations'], 9999 );
 		}
 	}
 
@@ -105,20 +98,8 @@ class Settings {
         return $endpoints;
     }
 
-	function main_open() {
-		?>
-		<main id="content">
-		<?php
-	}
-
-	function main_close() {
-		?>
-		</main>
-		<?php
-	}
-
 	function elementor_subtle_fade_in_entrance_animations() {
-		wp_enqueue_style('sd-elementor-subtle-fade-in-entrance-animations', plugin_dir_url(__DIR__) . 'assets/elementor-subtle-fade-in-entrance-animations.css', ['e-animations'], '1.0.0');
+		wp_enqueue_style('sd-elementor-subtle-fade-in-entrance-animations', plugin_dir_url(__DIR__) . 'assets/elementor-subtle-fade-in-entrance-animations.css', null, '1.0.0');
 	}
 
 	function add_registration_date_column( $columns ) {
